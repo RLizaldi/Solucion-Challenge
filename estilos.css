@@ -1,0 +1,70 @@
+body{
+    width: 940px;
+    background: linear-gradient(#FEFEFE, #C3C3C3);
+}
+body,#letra,.principal,.caja_1,.caja_2,.mensaje,.cadena{
+    margin: 10px;
+    padding: 10px;
+}
+#letra{
+    font-size: 100px;
+    text-align: left;
+    color: #0000FF;
+}
+.principal{
+    display: inline-flex;
+}
+.caja_1, .caja_2{
+    display: grid;
+}
+.caja_2 .bCopiar{
+    width: 150px;
+    height: 30px;
+    margin: 1px 1px 1px 65px;
+    padding: 5px;
+    border-radius: 10px;
+    border-width: 1px;
+}
+.informacion{
+    margin: 1px 1px 1px 50px;
+    padding: 5px;
+}
+.texto{
+    width: 430px;
+    margin: 15px 20px 15px 100px;
+    font-size: 20px;
+    font-style: italic;
+    background-color: transparent;
+    border: transparent;
+    resize: none;
+    text-transform: lowercase;
+}
+.cambio{
+    width: 250px;
+    height: 415px;
+    margin: 15px 20px 15px 10px;
+    font-size: 20px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    resize: none;
+}
+.botones{
+    margin: 5px 1px 5px 1px;
+    padding: 5px;
+    display: inline-block;
+}
+.botones input{
+    width: 150px;
+    height: 30px;
+    margin: 5px 50px 5px 50px;
+    padding: 5px;
+    border-radius: 10px;
+    border-width: 1px;
+}
+.bEncriptar:hover,.bDesencriptar:hover{
+    color: #FFFFFF;
+    background: #0000CD;
+}
+.texto:focus{
+    outline: 0;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Encriptador-Desencriptador</title>
+        <link rel="stylesheet" href="estilos.css">
+    </head>
+    <body>
+        <main class="principal">
+            <div class="caja_1">
+                <label id="letra">a</label>
+                <textarea cols="70" rows="10" id="textoEntrada" class="texto">Ingrese texto aqui...</textarea>
+                <label class="informacion">&#9888 Solo letras minusculas y sin acentos</label>
+                <div class="botones">
+                    <input type="submit" value="Encriptar!" class="bEncriptar" />
+                    <input type="submit" value="Desencriptar!" class="bDesencriptar" />
+                </div>
+            </div>
+            <div class="caja_2">
+                <textarea cols="70" rows="10" id="textoSalida" disabled="true" class="cambio">Sin texto</textarea>
+                <input type="submit" value="Copiar" class="bCopiar" />
+            </div>
+        </main>
+    </body>
+</html>
+<script>
+    const cTextoEntrada = document.querySelector(".texto");
+    const cTextoSalida = document.querySelector(".cambio");
+    const bCodificar = document.querySelector(".bEncriptar");
+    const bDescodificar = document.querySelector(".bDesencriptar");
+    const bCopiar = document.querySelector(".bCopiar");
+    var vocales = ["a","e","i","o","u"];
+    var codigo = ["ai","enter","imes","ober","ufat"];
+    var saltos = [1,4,3,3,3];
+    var cadenaSalida;
+
+    function procesar(cadenaTexto,opc){   
+        cadenaSalida = "";
+        i=0;
+        while(i<cadenaTexto.length){
+            j=0;
+            busqueda=true;
+            while(j<vocales.length){
+                if(cadenaTexto[i]==vocales[j]){
+                    busqueda=false;
+                    if(opc==0){
+                        cadenaSalida=cadenaSalida+codigo[j];
+                    }else{
+                        cadenaSalida=cadenaSalida+vocales[j];
+                        i=i+saltos[j];
+                    }
+                    break;
+                }
+                j++;
+            }
+            if(busqueda){
+                cadenaSalida=cadenaSalida+cadenaTexto[i];
+            }
+            i++;
+        }
+        return cadenaSalida;
+    }
+    function limpiarmostrar(){
+        cTextoEntrada.value="";
+    }
+    function encriptarTexto() {
+        cTextoSalida.value = procesar(cTextoEntrada.value,0);
+    }
+    function copiarTexto() {
+        cTextoEntrada.value = "";
+        cTextoEntrada.value = cTextoSalida.value;
+    }
+    function desencriptarTexto() {
+        cTextoSalida.value = "";
+        cTextoSalida.value = procesar(cTextoEntrada.value,1);
+    }
+    bCodificar.onclick = encriptarTexto;
+    bCopiar.onclick = copiarTexto;
+    bDescodificar.onclick = desencriptarTexto;
+    cTextoEntrada.onclick = limpiarmostrar;
+</script>
